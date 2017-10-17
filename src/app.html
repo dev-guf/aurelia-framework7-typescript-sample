@@ -1,0 +1,39 @@
+<template>
+    <!-- Framework7 Default App Scaffolding -->
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+      <!-- AURELIA-F7: Use an Aurelia module for the left panel area -->
+      <compose view-model="./pages/left-panel/left-panel"></compose>
+    </div>
+    <div class="views">
+    <!-- Views -->
+      <!-- Your main view should have "view-main" class -->
+      <f7-view is-main-view="true">
+       <f7-pages>
+        
+          <!-- AURELIA-F7: Preload all views into the dom, hiding all but the
+          homepage with the `cached` class -->
+          <f7-page repeat.for="view of views" name.bind="view.name" navbar-fixed.bind="view.nav" toolbar-through.bind="view.nav" cached.bind="!view.homepage">
+            <f7-navbar if.bind="view.nav" title.bind="view.navTitle" back-link="Back">
+                <f7-nav-left back-link.bind="!view.homepage" >
+                    <a href="#" class="open-panel link icon-only" if.bind="view.homepage">
+                      <i class="icon icon-bars"></i>
+                    </a>
+                      <!--  <f7-link if.bind="view.homepage" icon="icon-bars"  open-panel="left"></f7-link>-->
+                </f7-nav-left>
+            </f7-navbar>
+
+            
+            <div class="page-content">
+              <!-- AURELIA-F7: Use Aurelia modules for each page's content -->
+              <compose view-model.bind="view.moduleId"></compose>
+            </div>
+          </f7-page>
+        </f7-pages>
+      </f7-view>
+    </div>
+</template>
