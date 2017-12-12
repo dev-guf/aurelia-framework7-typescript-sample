@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const { AureliaPlugin, ModuleDependenciesPlugin } = require('aurelia-webpack-plugin')
+const projectRoot = path.resolve(__dirname, '../')
 
 module.exports = (env = {}) => {
   // Variables set by npm scripts in package.json
@@ -20,7 +21,7 @@ module.exports = (env = {}) => {
     },
     resolve: {
       extensions: ['.js', '.ts'],
-      modules: ["src", "node_modules"].map(x => path.resolve(x)),
+      modules: ["src", "node_modules","../radical-modules"].map(x => path.resolve(x))
     },
     module: {
       rules: [
