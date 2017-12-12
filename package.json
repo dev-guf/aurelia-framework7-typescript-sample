@@ -21,8 +21,7 @@
     "aurelia-templating-binding": "^1.3.0",
     "aurelia-templating-resources": "^1.4.0",
     "aurelia-templating-router": "^1.1.0",
-    "aurelia-fetch-client": "^1.1.3",
-    "aurelia-framework7-typescript":"radical-systems-australia/aurelia-framework7-typescript"
+    "aurelia-fetch-client": "^1.1.3"
     
   },
   "devDependencies": {

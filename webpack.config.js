@@ -56,13 +56,7 @@ module.exports = (env = {}) => {
     },
     plugins: [
       new AureliaPlugin({ includeAll: "src" }),
-      new ModuleDependenciesPlugin(
-        {
-          "aurelia-framework7-typescript":[
-            "components/f7-view"
-          ]
-        }),
-    
+      //new ModuleDependenciesPlugin(),
       new webpack.DefinePlugin({
         // Allows these constants to be accessed by the aurelia app
         PRODUCTION: JSON.stringify(isProduction),
