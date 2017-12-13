@@ -1,4 +1,4 @@
-import { Framework7Engine } from 'aurelia-framework7-typescript';
+import { Framework7Engine } from '../node_modules/aurelia-framework7-typescript/src/index';
 import { inject } from 'aurelia-framework';
 
 

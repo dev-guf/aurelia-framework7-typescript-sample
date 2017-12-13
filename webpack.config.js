@@ -21,14 +21,14 @@ module.exports = (env = {}) => {
     },
     resolve: {
       extensions: ['.js', '.ts'],
-      modules: ["src", "node_modules","../radical-modules"].map(x => path.resolve(x))
+      modules: ["src", "node_modules"].map(x => path.resolve(x))
     },
     module: {
       rules: [
         {
           test: /\.ts$/,
-          loader: 'ts-loader',
-          exclude: /node_modules/
+          loader: 'ts-loader'
+          
         },
         {
           test: /\.html$/,
@@ -57,7 +57,6 @@ module.exports = (env = {}) => {
     },
     plugins: [
       new AureliaPlugin({ includeAll: "src" }),
-      //new ModuleDependenciesPlugin(),
       new webpack.DefinePlugin({
         // Allows these constants to be accessed by the aurelia app
         PRODUCTION: JSON.stringify(isProduction),
