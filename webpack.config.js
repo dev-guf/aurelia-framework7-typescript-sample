@@ -21,14 +21,16 @@ module.exports = (env = {}) => {
     },
     resolve: {
       extensions: ['.js', '.ts'],
-      modules: ["src", "node_modules"].map(x => path.resolve(x))
+      modules: ["src", "node_modules"].map(x => path.resolve(x)),
+      alias :{ 
+        'aurelia-framework7-typescript':'aurelia-framework7-typescript/src/index' 
+      }
     },
     module: {
       rules: [
         {
           test: /\.ts$/,
           loader: 'ts-loader'
-          
         },
         {
           test: /\.html$/,
