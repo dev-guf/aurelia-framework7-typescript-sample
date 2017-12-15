@@ -6,12 +6,11 @@ import { HttpClient, json } from 'aurelia-fetch-client';
 export function configure (aurelia: Aurelia) {
 
     aurelia.use
-    .basicConfiguration()
-    .developmentLogging()
-    .plugin(PLATFORM.moduleName('aurelia-framework7-typescript'));
+      .basicConfiguration()
+      .developmentLogging()
+      .plugin(PLATFORM.moduleName('aurelia-framework7-typescript'));
     
     aurelia.start().then(() => {
       aurelia.setRoot()
     });
-
 }

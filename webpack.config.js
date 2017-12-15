@@ -62,7 +62,7 @@ module.exports = (env = {}) => {
       new webpack.DefinePlugin({
         // Allows these constants to be accessed by the aurelia app
         PRODUCTION: JSON.stringify(isProduction),
-        PLATFORM: JSON.stringify(platform)
+        MOBILE_PLATFORM: JSON.stringify(platform)
       })
     ],
     devServer: {
