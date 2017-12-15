@@ -1,13 +1,13 @@
-import { Framework7Engine } from '../node_modules/aurelia-framework7-typescript/src/index';
+import { Framework7Engine } from 'aurelia-framework7-typescript';
 import { inject } from 'aurelia-framework';
+import { EventAggregator } from 'aurelia-event-aggregator';
 
-
-@inject(Framework7Engine)
+@inject(Framework7Engine,EventAggregator)
 export class App {
   
   views:AppView[];
 
-  constructor (private f7:Framework7Engine) {
+  constructor (private f7:Framework7Engine, private ea:EventAggregator) {
     this.views = [
     {
       name: 'index',

@@ -1,20 +1,9 @@
 <template>
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="center">Left Panel</div>
-    </div>
-  </div>
-  <div class="list-block">
-    <ul>
-      <li>
-        <a href="#normal-page" class="item-link close-panel">
-          <div class="item-content">
-            <div class="item-inner">
-              <div class="item-title">Normal Page</div>
-            </div>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
+  <f7-navbar title="Left Panel"></f7-navbar>
+  <f7-list>
+    <f7-list-link close-panel href="#normal-page">
+      Normal Page
+      </f7-list-inner>
+    </f7-list-link>
+  </f7-list>
 </template>
