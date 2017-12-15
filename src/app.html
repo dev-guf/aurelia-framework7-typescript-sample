@@ -11,19 +11,13 @@
   </f7-panel-left>
   <f7-views>
     <!-- Views -->
-<<<<<<< HEAD
+
     <!-- Your main view should have "view-main" class -->
     <f7-view is-main-view>
       <f7-pages>
 
         <!-- AURELIA-F7: Preload all views into the dom, hiding all but the
-=======
-      <!-- Your main view should have "view-main" class -->
-      <f7-view is-main-view.bind="true">
-       <f7-pages>
-        
-          <!-- AURELIA-F7: Preload all views into the dom, hiding all but the
->>>>>>> 2c6f3e18102b5faf126515abc750fcdc2a2584ce
+
           homepage with the `cached` class -->
         <f7-page repeat.for="view of views" name.bind="view.name" navbar-fixed.bind="view.nav" toolbar-through.bind="view.nav" cached.bind="!view.homepage">
           <f7-navbar if.bind="view.nav" title.bind="view.navTitle" back-link="Back">
