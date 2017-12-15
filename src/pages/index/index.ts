@@ -1,13 +1,11 @@
-/* eslint-disable no-undef */
+import { Framework7Engine } from 'aurelia-framework7-typescript';
+import { inject } from 'aurelia-framework';
+
+
+@inject(Framework7Engine)
 export class Index {
   
-  platform:string;
-  environment:string;
-  
-  constructor () {
-    // You can customize the app's content based on the platform
-    // These variables are set by webpack via package.json
-    this.platform = PLATFORM
-    this.environment = PRODUCTION ? 'production' : 'development'
+  constructor (private f7:Framework7Engine) {
+    
   }
 }
