@@ -1,0 +1,84 @@
+<template>
+    <f7-block style="background-color:orange">
+        <f7-block>
+            <h2>${entry.agency}</h2>
+        </f7-block>
+        <f7-block if.bind="entry.rftNumber != null">
+            <h1>${entry.rftNumber}</h1>
+        </f7-block>
+        <f7-block if.bind="entry.releaseDate != null">
+            <h1>${entry.releaseDate}</h1>
+        </f7-block>
+    </f7-block>
+    <f7-block>${entry.Description}</f7-block>
+    <f7-block style="border-bottom: 2px solid black; margin: 0px 16px;"></f7-block>
+    <div if.bind="entry.closeDate !== null">
+        <f7-block-title>TENDER CLOSE DATE</f7-block-title>
+        <f7-block>${entry.closeDate}</f7-block>
+    </div>
+    <div if.bind="entry.closingRegion != null">
+        <f7-block-title>CLOSING REGION</f7-block-title>
+        <f7-block>${entry.closingRegion}</f7-block>
+    </div>
+    <div if.bind="entry.PriceRange != null">
+        <f7-block-title>PRICE RANGE</f7-block-title>
+        <f7-block>${entry.PriceRange}</f7-block>
+    </div>
+    <div if.bind="entry.ProjectOfficer != null">
+        <f7-block-title>PROJECT OFFICER</f7-block-title>
+        <f7-block>${entry.ProjectOfficer}</f7-block>
+    </div>
+    <div if.bind="entry.rftAvailableLodgementMethod != null">
+        <f7-block-title>LODGEMENT METHODS</f7-block-title>
+        <f7-block>${entry.rftAvailableLodgementMethod}</f7-block>
+    </div>
+    <div if.bind="entry.GeneralEnquiries != null">
+        <f7-block-title>GENERAL ENQUIRIES</f7-block-title>
+        <f7-block>${entry.GeneralEnquiries}</f7-block>
+    </div>
+    <div if.bind="entry.technicalEnquiriesPhone != null">
+        <f7-block-title>TECHNICAL ENQUIRIES</f7-block-title>
+        <f7-block>${entry.technicalEnquiriesPhone}</f7-block>
+    </div>
+    <div if.bind="entry.furtherEnquiries != null">
+        <f7-block-title>FURTHER ENQUIRIES</f7-block-title>
+        <f7-block>${entry.furtherEnquiries}</f7-block>
+    </div>
+    <f7-block-title>CATEGORY</f7-block-title>
+    <f7-block>${entry.category}</f7-block>
+    <f7-block-title>REGIONS OF WORK</f7-block-title>
+    <f7-block>${entry.rftWorkRegions}</f7-block>
+    <div if.bind="entry.calAccreditationRequired != null">
+        <f7-block-title>CAL ACCREDITATION</f7-block-title>
+        <f7-block>${entry.calAccreditationRequired}</f7-block>
+    </div>
+    <div if.bind="entry.siteInspectionDetails != null">
+        <f7-block-title>SITE INSPECTION DETAILS</f7-block-title>
+        <f7-block>${entry.siteInspectionDetails}</f7-block>
+    </div>
+    <div if.bind="entry.industryBriefingDetails != null">
+        <f7-block-title>Industry Briefing</f7-block-title>
+        <f7-block>${entry.industryBriefingDetails}</f7-block>
+    </div>
+    <f7-block style="border-bottom: 2px solid black; margin: 0px 16px;"></f7-block>
+    <div if.bind="entry.ProspectiveTenderers != null">
+        <f7-block-title>PROSPECTIVE TENDERERS</f7-block-title>
+        <f7-block-title repeat.for="tenderer of entry.ProspectiveTenderers">${tenderer}</f7-block-title>
+    </div>
+    <div if.bind="entry.ClosingList != null">
+        <f7-block-title>Closing List</f7-block-title>
+        <f7-block-title repeat.for="tenderer of entry.ClosingList">${tenderer}</f7-block-title>
+    </div>
+    <div if.bind="entry.AwardedContractor != null">
+        <f7-block-title>AWARDED CONTRACTOR</f7-block-title>
+        <f7-block-title>${entry.AwardedContractor}</f7-block-title>
+    </div>
+    <div if.bind="entry.AwardedValue != null">
+        <f7-block-title>AWARDED VALUE</f7-block-title>
+        <f7-block-title>${entry.AwardedValue}</f7-block-title>
+    </div>
+    <div if.bind="entry.BasisOfPayment != null">
+        <f7-block-title>BASIS OF PAYMENT</f7-block-title>
+        <f7-block-title>${entry.BasisOfPayment}</f7-block-title>
+    </div>
+</template>
