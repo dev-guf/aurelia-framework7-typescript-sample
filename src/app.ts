@@ -10,13 +10,10 @@ export class App {
   constructor (private f7:Framework7Engine, private ea:EventAggregator) {
     this.views = [
     {
-      name: 'index',
-      navTitle: 'Home',
-      moduleId: './pages/index/index',
-      nav: true,
-      homepage:true,
-    }, 
-   
+      name: 'no-nav',
+      moduleId: './pages/no-nav/no-nav',
+      nav: false
+    },
     {
       name: 'normal-page',
       navTitle: 'Normal Page',
@@ -24,9 +21,70 @@ export class App {
       nav: true
     },
     {
-      name: 'no-nav',
-      moduleId: './pages/no-nav/no-nav',
-      nav: false
+      name: 'index',
+      navTitle: 'Home',
+      moduleId: './pages/index/index',
+      nav: true,
+      homepage:true,
+    },
+    {
+      name: 'page-outline',
+      navTitle: 'Page Outline',
+      moduleId: './pages/page-outline/page-outline',
+      nav: true
+    },
+    {
+      name: 'about-the-application',
+      navTitle: 'About the Application',
+      moduleId: './pages/about-the-application/about-the-application',
+      nav: true,
+    },
+    {
+      name: 'my-businesses',
+      navTitle: 'My Businesses',
+      moduleId: './pages/my-businesses/my-businesses',
+      nav: true,
+    },
+    {
+      name: 'my-account',
+      navTitle: 'My Account',
+      moduleId: './pages/my-account/my-account',
+      nav: true,
+    },
+    {
+      name: 'sign-in',
+      navTitle: 'Sign In',
+      moduleId: './pages/sign-in/sign-in',
+      nav: true,
+      homepage:true,
+    },
+    {
+      name: 'future-opportunities',
+      navTitle: 'Future Opportunities',
+      moduleId: './pages/future-opportunities/future-opportunities',
+      nav: true,
+      homepage:true,
+    },
+    {
+      name: 'awarded',
+      navTitle: 'Awarded',
+      moduleId: './pages/awarded/awarded',
+      nav: true,
+      homepage:true,
+    },
+    {
+      name: 'closed',
+      navTitle: 'Closed',
+      moduleId: './pages/closed/closed',
+      nav: true,
+      homepage:true,
+    },
+    {
+      name: 'current',
+      navTitle: 'Current',
+      moduleId: './pages/current/current',
+      nav: true,
+      homepage:true,
     }]
   }
 

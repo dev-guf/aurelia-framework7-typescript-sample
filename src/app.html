@@ -5,10 +5,10 @@
   <!-- Panels overlay-->
   <f7-panel-overlay></f7-panel-overlay>
   <!-- Left panel with reveal effect-->
-  <f7-panel-left>
+  <f7-panel left>
     <!-- AURELIA-F7: Use an Aurelia module for the left panel area -->
     <compose view-model="./pages/left-panel/left-panel"></compose>
-  </f7-panel-left>
+  </f7-panel>
   <f7-views>
     <!-- Views -->
 
@@ -30,7 +30,7 @@
               <f7-link href="#" icon-only open-panel>
                 <i class="icon icon-bars"></i>
               </f7-link>
-              <!--  <f7-link if.bind="view.homepage" icon="icon-bars"  open-panel="left"></f7-link>-->
+              <f7-link if.bind="view.homepage" icon-only open-panel="left"></f7-link>
             </f7-nav-left>
           </f7-navbar>
 

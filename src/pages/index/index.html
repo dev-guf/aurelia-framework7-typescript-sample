@@ -1,18 +1,22 @@
 <template>
 
-  <f7-block title>Test Pages</f7-block>
+  <f7-block-title>Test Pages</f7-block-title>
   <f7-list>
-        <f7-list-link href="#normal-page">
-        Normal Page
-        </f7-list-link>
-        <f7-list-link href="#no-nav">
-        Without Nav
-        </f7-list-link>
+    <f7-list-link href="#normal-page" text-left="Normal Page"></f7-list-link>
+    <f7-list-link href="#no-nav" text-left="Without Nav"></f7-list-link>
+    <f7-list-link href="#quotes-and-tenders" text-left="Quotes and Tenders"></f7-list-link>
+    <f7-list-link href="#future-opportunities" text-left="Future Opportunities"></f7-list-link>
+    <f7-list-link href="#my-businesses" text-left="My Businesses"></f7-list-link>
+    <f7-list-link href="#my-account" text-left="My Account"></f7-list-link>
+    <f7-list-link href="#about-the-application" text-left="About the Application"></f7-list-link>
+
   </f7-list>
-  <f7-block title>Cross Platform</f7-block>
+  <f7-block-title>Cross Platform</f7-block-title>
   <f7-block>
-    <p>This is the <strong>${platform}</strong> version of this app.</p>
-    <p>This is the <strong>${environment}</strong> enviroment.</p>
+    <p>This is the
+      <strong>${f7.platform}</strong> version of this app.</p>
+    <p>This is the
+      <strong>${f7.environment}</strong> enviroment.</p>
   </f7-block>
 
 </template>

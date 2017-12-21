@@ -1,9 +1,13 @@
 <template>
-  <f7-navbar title="Left Panel"></f7-navbar>
+  <f7-navbar title="Tenders Online"></f7-navbar>
   <f7-list>
-    <f7-list-link close-panel href="#normal-page">
-      Normal Page
-      </f7-list-inner>
-    </f7-list-link>
+    <f7-list-link close-panel href="#current" text-left="Current Quotes & Tenders"></f7-list-link>
+    <f7-list-link close-panel href="#closed" text-left="Closed Quotes & Tenders"></f7-list-link>
+    <f7-list-link close-panel href="#awarded" text-left="Awarded Quotes & Tenders"></f7-list-link>
+    <f7-list-link close-panel href="#future-opportunities" text-left="Future Opportunities"></f7-list-link>
+    <f7-list-link close-panel href="#my-businesses" text-left="My Businesses" if.bind="signedIn"></f7-list-link>
+    <f7-list-link close-panel href="#my-account" text-left="My Account" if.bind="signedIn"></f7-list-link>
+    <f7-list-link close-panel href="#sign-in" text-left="Sign In" if.bind="!signedIn"></f7-list-link>
+    <f7-list-link close-panel href="#about-the-application" text-left="About the Application"></f7-list-link>
   </f7-list>
 </template>
