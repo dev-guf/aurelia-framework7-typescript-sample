@@ -1,84 +1,152 @@
 <template>
-    <f7-block style="background-color:orange">
+    <link rel="stylesheet" href="../../../style/framework7-icons.css">
+    <f7-navbar color="orange" title.bind="cat">
+        <f7-nav-left>
+            <f7-link href="#" back icon-only>
+                <i class="icon icon-back"></i>
+            </f7-link>
+        </f7-nav-left>
+    </f7-navbar>
+
+    <f7-page-content>
+        <div style="margin-top: 56px"></div>
+        <f7-block style="background-color:#ff8c00; color: white">
+            <f7-block style="margin-bottom: 0px;">
+                <h2 style="margin: 0px;">${entry.agency}</h2>
+            </f7-block>
+            <f7-block style="margin-top: 0px;" if.bind="entry.rftNumber != null">
+                <h1 style="margin: 0px;">${entry.rftNumber}</h1>
+            </f7-block>
+            <f7-block if.bind="entry.expectedReleaseMonth != null && cat == 'Future Opportunities'" style="margin-top: 0px;">
+                <h1 style="margin: 0px;">${entry.expectedReleaseMonth} ${entry.expectedReleaseYear}</h1>
+            </f7-block>
+        </f7-block>
+
+        <f7-block>${entry.title}</f7-block>
+
+        <f7-block style="border-bottom: 2px solid black; margin: 0px 16px;"></f7-block>
+
+        <div if.bind="entry.closeDate !== null && cat != 'Future Opportunities'">
+            <f7-block-title>TENDER CLOSE DATE</f7-block-title>
+            <f7-block style="margin-bottom: 2px;">
+                <i class="f7-icons size-14">calendar</i>&emsp;${entry.closeDate | legacyDate } CST</f7-block>
+            <f7-block style="font-style: italic; color: #808080; font-size: 12px; margin: 2px;">&emsp;&emsp;CST is Australian Central Standard Time</f7-block>
+        </div>
+
+        <div if.bind="entry.closingRegion != null && cat != 'Awarded'">
+            <f7-block-title>CLOSING REGION</f7-block-title>
+            <f7-block>
+                <i class="f7-icons size-14">world</i>&emsp;${entry.closingRegion}</f7-block>
+        </div>
+
+        <div if.bind="entry.priceRange != null">
+            <f7-block-title>PRICE RANGE</f7-block-title>
+            <f7-block>
+                <i class="f7-icons size-14">money_dollar_fill</i>&emsp;${entry.priceRange}</f7-block>
+        </div>
+
+        <div if.bind="entry.projectOfficerName != null">
+            <f7-block-title>PROJECT OFFICER</f7-block-title>
+            <f7-block style="margin-bottom: 2px;">
+                <i class="f7-icons size-14">briefcase_fill</i>&emsp;${entry.projectOfficerName} (<a>${entry.projectOfficerPhone}</a>)</f7-block>
+            <f7-block style="font-style: italic; color: #808080; font-size: 12px; margin: 2px;">&emsp;&emsp;(if outside Australia call <a>+61 ${intNums[0]}</a>)</f7-block>
+        </div>
+
+        <div if.bind="entry.rftAvailableLodgementMethod != null && cat != 'Closed' && cat != 'Awarded'">
+            <f7-block-title>LODGEMENT METHODS</f7-block-title>
+            <f7-block if.bind="entry.rftAvailableLodgementMethod[0] != null">
+                <i class="f7-icons size-14">document_text_fill</i>&emsp;${entry.rftAvailableLodgementMethod[0]}</f7-block>
+            <f7-block if.bind="entry.rftAvailableLodgementMethod[1] != null">
+                <i class="f7-icons size-14">paper_plane</i>&emsp;${entry.rftAvailableLodgementMethod[1]}</f7-block>
+            <f7-block if.bind="entry.rftAvailableLodgementMethod[2] != null">
+                <i class="f7-icons size-14">email_fill</i>&emsp;${entry.rftAvailableLodgementMethod[2]}</f7-block>
+        </div>
+
+        <div if.bind="entry.generalEnquiriesName != null">
+            <f7-block-title>GENERAL ENQUIRIES</f7-block-title>
+            <f7-block style="margin-bottom: 2px;">
+                <i class="f7-icons size-14">phone_fill</i>&emsp;${entry.generalEnquiriesName} (<a>${entry.generalEnquiriesPhone}</a>)</f7-block>
+            <f7-block style="font-style: italic; color: #808080; font-size: 12px; margin: 2px;">&emsp;&emsp;(if outside Australia call </a>+61 ${intNums[1]}</a>)</f7-block>
+        </div>
+
+        <div if.bind="entry.technicalEnquiriesPhone != null && cat != 'Awarded'">
+            <f7-block-title>TECHNICAL ENQUIRIES</f7-block-title>
+            <f7-block style="margin-bottom: 2px;">
+                <i class="f7-icons size-14">phone_fill</i>&emsp;<a>${entry.technicalEnquiriesPhone}</a></f7-block>
+            <f7-block style="font-style: italic; color: #808080; font-size: 12px; margin: 2px;">&emsp;&emsp;(if outside Australia call <a>+61 ${intNums[2]}</a>)</f7-block>
+        </div>
+
+        <div if.bind="entry.furtherEnquiries != null">
+            <f7-block-title>FURTHER ENQUIRIES</f7-block-title>
+            <f7-block repeat.for="entry of entry.furtherEnquiries" style="margin: 0;">
+                <i if.bind="$first" class="f7-icons size-14">info_fill</i>
+                <span if.bind="!$first">&emsp;</span>&emsp;${entry}</f7-block>
+        </div>
+
+        <f7-block-title>CATEGORY</f7-block-title>
         <f7-block>
-            <h2>${entry.agency}</h2>
-        </f7-block>
-        <f7-block if.bind="entry.rftNumber != null">
-            <h1>${entry.rftNumber}</h1>
-        </f7-block>
-        <f7-block if.bind="entry.releaseDate != null">
-            <h1>${entry.releaseDate}</h1>
-        </f7-block>
-    </f7-block>
-    <f7-block>${entry.Description}</f7-block>
-    <f7-block style="border-bottom: 2px solid black; margin: 0px 16px;"></f7-block>
-    <div if.bind="entry.closeDate !== null">
-        <f7-block-title>TENDER CLOSE DATE</f7-block-title>
-        <f7-block>${entry.closeDate}</f7-block>
-    </div>
-    <div if.bind="entry.closingRegion != null">
-        <f7-block-title>CLOSING REGION</f7-block-title>
-        <f7-block>${entry.closingRegion}</f7-block>
-    </div>
-    <div if.bind="entry.PriceRange != null">
-        <f7-block-title>PRICE RANGE</f7-block-title>
-        <f7-block>${entry.PriceRange}</f7-block>
-    </div>
-    <div if.bind="entry.ProjectOfficer != null">
-        <f7-block-title>PROJECT OFFICER</f7-block-title>
-        <f7-block>${entry.ProjectOfficer}</f7-block>
-    </div>
-    <div if.bind="entry.rftAvailableLodgementMethod != null">
-        <f7-block-title>LODGEMENT METHODS</f7-block-title>
-        <f7-block>${entry.rftAvailableLodgementMethod}</f7-block>
-    </div>
-    <div if.bind="entry.GeneralEnquiries != null">
-        <f7-block-title>GENERAL ENQUIRIES</f7-block-title>
-        <f7-block>${entry.GeneralEnquiries}</f7-block>
-    </div>
-    <div if.bind="entry.technicalEnquiriesPhone != null">
-        <f7-block-title>TECHNICAL ENQUIRIES</f7-block-title>
-        <f7-block>${entry.technicalEnquiriesPhone}</f7-block>
-    </div>
-    <div if.bind="entry.furtherEnquiries != null">
-        <f7-block-title>FURTHER ENQUIRIES</f7-block-title>
-        <f7-block>${entry.furtherEnquiries}</f7-block>
-    </div>
-    <f7-block-title>CATEGORY</f7-block-title>
-    <f7-block>${entry.category}</f7-block>
-    <f7-block-title>REGIONS OF WORK</f7-block-title>
-    <f7-block>${entry.rftWorkRegions}</f7-block>
-    <div if.bind="entry.calAccreditationRequired != null">
-        <f7-block-title>CAL ACCREDITATION</f7-block-title>
-        <f7-block>${entry.calAccreditationRequired}</f7-block>
-    </div>
-    <div if.bind="entry.siteInspectionDetails != null">
-        <f7-block-title>SITE INSPECTION DETAILS</f7-block-title>
-        <f7-block>${entry.siteInspectionDetails}</f7-block>
-    </div>
-    <div if.bind="entry.industryBriefingDetails != null">
-        <f7-block-title>Industry Briefing</f7-block-title>
-        <f7-block>${entry.industryBriefingDetails}</f7-block>
-    </div>
-    <f7-block style="border-bottom: 2px solid black; margin: 0px 16px;"></f7-block>
-    <div if.bind="entry.ProspectiveTenderers != null">
-        <f7-block-title>PROSPECTIVE TENDERERS</f7-block-title>
-        <f7-block-title repeat.for="tenderer of entry.ProspectiveTenderers">${tenderer}</f7-block-title>
-    </div>
-    <div if.bind="entry.ClosingList != null">
-        <f7-block-title>Closing List</f7-block-title>
-        <f7-block-title repeat.for="tenderer of entry.ClosingList">${tenderer}</f7-block-title>
-    </div>
-    <div if.bind="entry.AwardedContractor != null">
-        <f7-block-title>AWARDED CONTRACTOR</f7-block-title>
-        <f7-block-title>${entry.AwardedContractor}</f7-block-title>
-    </div>
-    <div if.bind="entry.AwardedValue != null">
-        <f7-block-title>AWARDED VALUE</f7-block-title>
-        <f7-block-title>${entry.AwardedValue}</f7-block-title>
-    </div>
-    <div if.bind="entry.BasisOfPayment != null">
-        <f7-block-title>BASIS OF PAYMENT</f7-block-title>
-        <f7-block-title>${entry.BasisOfPayment}</f7-block-title>
-    </div>
+            <i class="f7-icons size-14">keyboard_fill</i>&emsp;${entry.category}</f7-block>
+
+        <div if.bind="entry.rftWorkRegions != null">
+            <f7-block-title>REGIONS OF WORK</f7-block-title>
+            <f7-block repeat.for="regions of entry.rftWorkRegions" style="margin: 0;">
+                <i if.bind="$first" class="f7-icons size-14">home_fill</i>
+                <span if.bind="!$first">&emsp;</span>&emsp;${regions}</f7-block>
+                <div style="display: block; height: 10px;"></div>
+        </div>
+        <div if.bind="entry.workRegions != null">
+            <f7-block-title>REGIONS OF WORK</f7-block-title>
+            <f7-block repeat.for="regions of entry.workRegions" style="margin: 0;">
+                <i if.bind="$first" class="f7-icons size-14">home_fill</i>
+                <span if.bind="!$first">&emsp;</span>&emsp;${regions}</f7-block>
+                <div style="display: block; height: 10px;"></div>
+        </div>
+
+        <div if.bind="entry.calAccreditationRequired != null && cat != 'Awarded'">
+            <f7-block-title>CAL ACCREDITATION</f7-block-title>
+            <f7-block if.bind="entry.calAccreditationRequired">
+                <i class="f7-icons size-14">check_round_fill</i>&emsp;CAL Accreditation is REQUIRED</f7-block>
+            <f7-block if.bind="!entry.calAccreditationRequired">
+                <i class="f7-icons size-14">close_round_fill</i>&emsp;CAL Accreditation is optional</f7-block>
+        </div>
+
+        <div if.bind="entry.siteInspectionDetails != null && entry.siteInspectionDetails != ''">
+            <f7-block-title>SITE INSPECTION DETAILS</f7-block-title>
+            <f7-block>
+                <i class="f7-icons size-14">list_fill</i>&emsp;${entry.siteInspectionDetails}</f7-block>
+        </div>
+
+        <div if.bind="entry.industryBriefingDetails != null && entry.industryBriefingDetails != ''">
+            <f7-block-title>Industry Briefing</f7-block-title>
+            <f7-block>
+                <i class="f7-icons size-14">graph_round_fill</i>&emsp;${entry.industryBriefingDetails}</f7-block>
+        </div>
+
+        <f7-block style="border-bottom: 2px solid black; margin: 0px 16px;"></f7-block>
+        
+        <div if.bind="list.closingTenderers != null">
+            <f7-block-title if.bind="list.closing">CLOSING LIST</f7-block-title>
+            <f7-block-title if.bind="!list.closing">PROSPECTIVE TENDERERS</f7-block-title>
+            <f7-block-title repeat.for="tenderer of list.closingTenderers" style="padding-top: 0;">${tenderer}</f7-block-title>
+        </div>
+
+        <div if.bind="list.awardedTenderers[0].legalName != null">
+            <f7-block-title>AWARDED CONTRACTOR</f7-block-title>
+            <f7-block-title>
+                <i class="f7-icons size-14">star_fill</i>&emsp;${list.awardedTenderers[0].legalName}</f7-block-title>
+        </div>
+
+        <div if.bind="list.awardedTenderers[0].amount != null">
+            <f7-block-title>AWARDED VALUE</f7-block-title>
+            <f7-block-title>
+                <i class="f7-icons size-14">money_dollar_fill</i>&emsp;${list.awardedTenderers[0].amount}</f7-block-title>
+        </div>
+
+        <div if.bind="list.awardedTenderers[0].basisOfPayment != null">
+            <f7-block-title>BASIS OF PAYMENT</f7-block-title>
+            <f7-block-title>
+                <i class="f7-icons size-14">money_dollar_fill</i>&emsp;${list.awardedTenderers[0].basisOfPayment}</f7-block-title>
+        </div>
+        <br>
+    </f7-page-content>
 </template>

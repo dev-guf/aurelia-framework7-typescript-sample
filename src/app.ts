@@ -31,7 +31,7 @@ export class App {
       name: 'page-outline',
       navTitle: 'Page Outline',
       moduleId: './pages/page-outline/page-outline',
-      nav: true
+      nav: false
     },
     {
       name: 'about-the-application',
@@ -89,6 +89,7 @@ export class App {
   }
 
   attached () {
+   
     this.f7.setUpFramework7();
     
   }

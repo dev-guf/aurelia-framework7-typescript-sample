@@ -11,15 +11,22 @@ declare interface AppView{
 
 declare interface ITenderCategories{
     name:string;
-    items:ITender[]
+    items:ITender[];
 }
 
 declare interface ITenderResponse {
     items:ITender[];
+    futureOpportunities:ITender[];
     count:number;
 }
 
-declare interface ITender {
+declare interface IListResponse {
+    closing: boolean;
+    awardedTenderers:IList[];
+    closingTenderers: string[];
+}
+
+declare interface ITender extends ITenderFuture{
     rftId: number;
     rftNumber: string;
     title: string;
@@ -27,6 +34,7 @@ declare interface ITender {
     itemType: string;
     closeDate: string;
     releaseDate: string;
+    awardDate?: string;
     contractNo: string;
     rftAvailableLodgementMethod?: (string)[] | null;
     technicalEnquiriesPhone: string;
@@ -40,6 +48,29 @@ declare interface ITender {
     isTenderCancelled: boolean;
     siteInspectionDetails: string;
     industryBriefingDetails: string;
+}
+
+declare interface ITenderFuture {
+    ftoId: number;
+    expectedReleaseMonth: string;
+    expectedReleaseYear: string;
+    expectedReleaseDate: string;
+    title: string;
+    agency: string;
+    category: string;
+    workRegions: (string)[];
+    priceRange: string;
+    calAccreditationRequired: boolean;
+    projectOfficerName: string;
+    projectOfficerPhone: string;
+    generalEnquiriesName: string;
+    generalEnquiriesPhone: string;
+}
+
+declare interface IList {
+    legalName: string;
+    basisOfPayment: string;
+    amount: string;
 }
   
 // declare interface IListEntry{

@@ -1,17 +1,24 @@
 <template>
-        <f7-block-title>Awarded</f7-block-title>
-        <f7-list>
-            <template repeat.for="category of categories">
-                <f7-block-title>${category.name}</f7-block-title>
-                <f7-list-link repeat.for="result of category.items" text-left.bind="result.rftNumber" text-center.bind="result.title" href="#page-outline" id.bind="result.rftId"></f7-list-link>
-            </template>   
-        </f7-list>
-        <f7-block-title>Cross Platform</f7-block-title>
-        <f7-block>
-            <p>This is the
-                <strong>${f7.platform}</strong> version of this app.</p>
-            <p>This is the
-                <strong>${f7.environment}</strong> enviroment.</p>
-        </f7-block>
-    
-    </template>
+    <div style="margin-top: -32px"></div>
+    <f7-list>
+        <f7-list-item>
+            <f7-label>Group by:</f7-label>
+            <f7-input type="select" page="3" options="None, Agency, Region, Category, Award Status, Awarded Date" default="4">
+            </f7-input>
+        </f7-list-item>
+        <template repeat.for="category of categories">
+            <f7-block-title if.bind="!(category.name == null)">${category.name}</f7-block-title>
+            <f7-list-link repeat.for="result of category.items" need-check="yes" icon-check.bind="result.isTenderCancelled" icon-left.bind="result.itemType"
+                text-left.bind="result.rftNumber" text-center.bind="result.title" href="#page-outline" id.bind="result.rftId"
+                cat.bind="'Awarded'"></f7-list-link>
+        </template>
+    </f7-list>
+    <f7-block-title>Cross Platform</f7-block-title>
+    <f7-block>
+        <p>This is the
+            <strong>${f7.platform}</strong> version of this app.</p>
+        <p>This is the
+            <strong>${f7.environment}</strong> enviroment.</p>
+    </f7-block>
+
+</template>

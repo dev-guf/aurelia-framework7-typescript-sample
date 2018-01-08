@@ -20,7 +20,7 @@
 
           homepage with the `cached` class -->
         <f7-page repeat.for="view of views" name.bind="view.name" navbar-fixed.bind="view.nav" toolbar-through.bind="view.nav" cached.bind="!view.homepage">
-          <f7-navbar if.bind="view.nav" title.bind="view.navTitle" back-link="Back">
+          <f7-navbar color="orange" if.bind="view.nav" title.bind="view.navTitle">
             <f7-nav-left if.bind="!view.homepage">
               <f7-link href="#" back icon-only>
                 <i class="icon icon-back"></i>
@@ -30,7 +30,6 @@
               <f7-link href="#" icon-only open-panel>
                 <i class="icon icon-bars"></i>
               </f7-link>
-              <f7-link if.bind="view.homepage" icon-only open-panel="left"></f7-link>
             </f7-nav-left>
           </f7-navbar>
 
