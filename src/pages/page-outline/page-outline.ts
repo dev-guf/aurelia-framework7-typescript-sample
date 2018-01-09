@@ -41,7 +41,6 @@ export class PageOutline {
     activate() {
         this.ea.subscribe("page:reinit", this.onLoad);
         this.ea.subscribe("page:init", this.onLoad);
-
     }
 
     formatPhones(project: string, general: string, technical: string) {
