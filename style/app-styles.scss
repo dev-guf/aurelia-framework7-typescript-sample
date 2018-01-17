@@ -1,0 +1,40 @@
+@import "app-theme";
+
+body {
+    color: $app-primary-font-color;
+}
+
+.content-block {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.agency-block {
+    background-color: $app-primary-orange;
+    color: white;
+    padding: 2px 0 2px 0;
+}
+
+.agency-title {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.rft-number {
+    margin: 0;
+    font-size: 2.2em;
+}
+
+.awarded-block {
+    background-color: $app-success-color;
+    margin-top: 0;
+}
+
+.awarded-block-text {
+    font-size: 1.0em;
+    font-weight: normal;
+}
+
+.awarded-block-date {
+    color: lighten($app-primary-font-color, 20%);
+}

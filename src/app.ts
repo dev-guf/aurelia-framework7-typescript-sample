@@ -34,12 +34,6 @@ export class App {
       nav: false
     },
     {
-      name: 'about-the-application',
-      navTitle: 'About the Application',
-      moduleId: './pages/about-the-application/about-the-application',
-      nav: true,
-    },
-    {
       name: 'my-businesses',
       navTitle: 'My Businesses',
       moduleId: './pages/my-businesses/my-businesses',

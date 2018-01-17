@@ -12,6 +12,7 @@ export class PageOutline {
     list: IListResponse;
 
     constructor(private DataService: DataService, private ea: EventAggregator) {
+
     }
 
     onLoad = (pd: PageData) => {
