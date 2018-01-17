@@ -1,6 +1,7 @@
 import { Framework7Engine } from 'aurelia-framework7-typescript';
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
+import '../style/app-styles.scss';
 
 @inject(Framework7Engine,EventAggregator)
 export class App {
