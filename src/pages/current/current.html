@@ -3,8 +3,9 @@
     <f7-list>
         <f7-list-item>
             <f7-label>Group by:</f7-label>
-            <f7-input type="select" page="1" options="None, Agency, Region, Category, Request Type, Release Date, Close Date" default="4">
-            </f7-input>
+            <f7-input type="select" options="None, Agency, Region, Category, Request Type, Release Date, Close Date" default="4" value.bind="currentCat"></f7-input>
+            <f7-label>Search</f7-label>
+            <f7-input value.bind="searchText & debounce:850" type="text" placeholder="Search"></f7-input>
         </f7-list-item>
         <template repeat.for="category of categories">
             <f7-block-title if.bind="!(category.name == null)">${category.name}</f7-block-title>

@@ -6,10 +6,10 @@ import * as moment from 'moment';
 
 export interface IDataService {
     GetAllTenders(): Promise<ITenderResponse>;
-    GetCurrentCategories(cats: string): Promise<ITenderCategories[]>
-    GetClosedCategories(cats: string): Promise<ITenderCategories[]>
-    GetAwardedCategories(cats: string): Promise<ITenderCategories[]>
-    GetFutureCategories(cats: string): Promise<ITenderCategories[]>
+    GetCurrentCategories(cats: string, search: string): Promise<ITenderCategories[]>
+    GetClosedCategories(cats: string, search: string): Promise<ITenderCategories[]>
+    GetAwardedCategories(cats: string, search: string): Promise<ITenderCategories[]>
+    GetFutureCategories(cats: string, search: string): Promise<ITenderCategories[]>
     GetDataById(Id: number, cat: string): Promise<ITender>
 }
 
@@ -24,10 +24,10 @@ export class DataService implements IDataService {
     ) {
     };
 
-    GetCurrentCategories(cats: string): Promise<ITenderCategories[]> {
+    GetCurrentCategories(cats: string, search: string): Promise<ITenderCategories[]> {
         var promise = new Promise<ITenderCategories[]>((accept, reject) => {
             this.GetCurrentData().then(response => {
-                var output: ITenderCategories[] = this.splitByCategory(response.items, cats);
+                var output: ITenderCategories[] = this.splitByCategory(response.items, cats, search);
                 output = this.sortCat(output, cats);
                 for (let entry of output) {
                     entry.items = this.sortEnt(entry.items, cats);
@@ -38,10 +38,10 @@ export class DataService implements IDataService {
         return promise;
     }
 
-    GetClosedCategories(cats: string): Promise<ITenderCategories[]> {
+    GetClosedCategories(cats: string, search: string): Promise<ITenderCategories[]> {
         var promise = new Promise<ITenderCategories[]>((accept, reject) => {
             this.GetClosedData().then(response => {
-                var output: ITenderCategories[] = this.splitByCategory(response.items, cats);
+                var output: ITenderCategories[] = this.splitByCategory(response.items, cats, search);
                 output = this.sortCat(output, cats);
                 for (let entry of output) {
                     entry.items = this.sortEnt(entry.items, cats);
@@ -52,10 +52,10 @@ export class DataService implements IDataService {
         return promise;
     }
 
-    GetAwardedCategories(cats: string): Promise<ITenderCategories[]> {
+    GetAwardedCategories(cats: string, search: string): Promise<ITenderCategories[]> {
         var promise = new Promise<ITenderCategories[]>((accept, reject) => {
             this.GetAwardedData().then(response => {
-                var output: ITenderCategories[] = this.splitByCategory(response.items, cats);
+                var output: ITenderCategories[] = this.splitByCategory(response.items, cats, search);
                 output = this.sortCat(output, cats);
                 for (let entry of output) {
                     entry.items = this.sortEnt(entry.items, cats);
@@ -66,10 +66,10 @@ export class DataService implements IDataService {
         return promise;
     }
 
-    GetFutureCategories(cats: string): Promise<ITenderCategories[]> {
+    GetFutureCategories(cats: string, search: string): Promise<ITenderCategories[]> {
         var promise = new Promise<ITenderCategories[]>((accept, reject) => {
             this.GetFutureData().then(response => {
-                var output: ITenderCategories[] = this.splitByCategory(response.futureOpportunities, cats);
+                var output: ITenderCategories[] = this.splitByCategory(response.futureOpportunities, cats, search);
                 output = this.sortCat(output, cats);
                 for (let entry of output) {
                     entry.items = this.sortEnt(entry.items, cats);
@@ -298,9 +298,16 @@ export class DataService implements IDataService {
     }
 
 
-    splitByCategory(input: ITender[], sort: string): ITenderCategories[] {
+    splitByCategory(input: ITender[], sort: string, search: string): ITenderCategories[] {
         var output: ITenderCategories[] = [];
+        var isSearch = (search != '' && search != undefined) ? true : false;
+        
         for (let entry of input) {
+            if (isSearch) {
+                if (entry.title.toLowerCase().indexOf(search.toLowerCase())==-1) {
+                    continue;
+                }
+            }
             switch (sort) {
                 case 'nam':
                 case 'none': {
