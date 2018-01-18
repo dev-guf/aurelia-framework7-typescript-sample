@@ -10,7 +10,7 @@
         <template repeat.for="category of categories">
             <f7-block-title if.bind="!(category.name == null)">${category.name}</f7-block-title>
             <f7-list-link repeat.for="result of category.items" icon-left.bind="result.itemType" text-left.bind="result.rftNumber" text-center.bind="result.title"
-                href="#page-outline" id.bind="result.rftId" cat.bind="'Current'"></f7-list-link>
+                href="#page-outline" text-right.bind="result.closeDate | calendarDate" id.bind="result.rftId" cat.bind="'Current'"></f7-list-link>
         </template>
     </f7-list>
     <f7-block-title>Cross Platform</f7-block-title>

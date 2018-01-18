@@ -4,6 +4,8 @@ import { inject } from 'aurelia-framework';
 
 @inject(Framework7Engine)
 export class Index {
+
   constructor (private f7:Framework7Engine) {
   }
+
 }

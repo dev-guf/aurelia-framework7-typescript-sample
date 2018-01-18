@@ -10,7 +10,7 @@
         <template repeat.for="category of categories">
             <f7-block-title if.bind="!(category.name == null)">${category.name}</f7-block-title>
             <f7-list-link repeat.for="result of category.items" need-check="yes" icon-check.bind="result.isTenderCancelled" icon-left.bind="result.itemType"
-                text-left.bind="result.rftNumber" text-center.bind="result.title" href="#page-outline" id.bind="result.rftId"
+                text-left.bind="result.rftNumber" text-right.bind="result.closeDate | calendarDate" text-center.bind="result.title" href="#page-outline" id.bind="result.rftId"
                 cat.bind="'Awarded'"></f7-list-link>
         </template>
     </f7-list>

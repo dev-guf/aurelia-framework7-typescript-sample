@@ -1,6 +1,7 @@
 import { Framework7Engine } from 'aurelia-framework7-typescript';
 import { inject } from 'aurelia-framework';
 import { EventAggregator } from 'aurelia-event-aggregator';
+import '../style/app-styles.scss';
 
 @inject(Framework7Engine,EventAggregator)
 export class App {
@@ -32,12 +33,6 @@ export class App {
       navTitle: 'Page Outline',
       moduleId: './pages/page-outline/page-outline',
       nav: false
-    },
-    {
-      name: 'about-the-application',
-      navTitle: 'About the Application',
-      moduleId: './pages/about-the-application/about-the-application',
-      nav: true,
     },
     {
       name: 'my-businesses',

@@ -1,5 +1,6 @@
 <template>
     <link rel="stylesheet" href="../../../style/framework7-icons.css">
+
     <f7-navbar color="orange" title.bind="cat">
         <f7-nav-left>
             <f7-link href="#" back icon-only>
@@ -10,17 +11,22 @@
 
     <f7-page-content>
         <div style="margin-top: 56px"></div>
-        <f7-block style="background-color:#ff8c00; color: white">
+        <f7-block class='agency-block'>
             <f7-block style="margin-bottom: 0px;">
-                <h2 style="margin: 0px;">${entry.agency}</h2>
+                <h2 class="agency-title">${entry.agency}</h2>
             </f7-block>
             <f7-block style="margin-top: 0px;" if.bind="entry.rftNumber != null">
-                <h1 style="margin: 0px;">${entry.rftNumber}</h1>
+                <h1 class="rft-number">${entry.rftNumber}</h1>
             </f7-block>
             <f7-block if.bind="entry.expectedReleaseMonth != null && cat == 'Future Opportunities'" style="margin-top: 0px;">
                 <h1 style="margin: 0px;">${entry.expectedReleaseMonth} ${entry.expectedReleaseYear}</h1>
             </f7-block>
         </f7-block>
+
+        <div class="awarded-block" style="margin-top: 0" if.bind="cat == 'Awarded'">
+            <f7-block class="awarded-block-title" style="margin-bottom: 2px;">AWARDED</f7-block>
+            <f7-block class="awarded-block-date" style="margin-top: 2px;">${entry.awardDate | calendarDate}</f7-block>
+        </div>
 
         <f7-block>${entry.title}</f7-block>
 

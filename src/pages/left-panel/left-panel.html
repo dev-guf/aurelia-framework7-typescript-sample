@@ -2,13 +2,13 @@
   <f7-navbar color="orange" title="Tenders Online"></f7-navbar>
   <f7-list>
     <div style="margin-top: 56px"></div>
-    <f7-list-link close-panel one-line href="#current" text-left="Current Quotes & Tenders"></f7-list-link>
-    <f7-list-link close-panel one-line href="#closed" text-left="Closed Quotes & Tenders"></f7-list-link>
-    <f7-list-link close-panel one-line href="#awarded" text-left="Awarded Quotes & Tenders"></f7-list-link>
+    <f7-list-link close-panel one-line href="#current" text-left="Current Quotes &amp; Tenders"></f7-list-link>
+    <f7-list-link close-panel one-line href="#closed" text-left="Closed Quotes &amp; Tenders"></f7-list-link>
+    <f7-list-link close-panel one-line href="#awarded" text-left="Awarded Quotes &amp; Tenders"></f7-list-link>
     <f7-list-link close-panel one-line href="#future-opportunities" text-left="Future Opportunities"></f7-list-link>
     <f7-list-link close-panel one-line href="#my-businesses" text-left="My Businesses" if.bind="signedIn"></f7-list-link>
     <f7-list-link close-panel one-line href="#my-account" text-left="My Account" if.bind="signedIn"></f7-list-link>
     <f7-list-link close-panel one-line href="#sign-in" text-left="Sign In" if.bind="!signedIn"></f7-list-link>
-    <f7-list-link close-panel one-line href="#about-the-application" icon="info" text-left="About the Application"></f7-list-link>
+    <f7-list-link close-panel click.call="showAboutModal()" one-line icon="info" text-left="About the Application"></f7-list-link>
   </f7-list>
 </template>
