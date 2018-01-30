@@ -21,7 +21,7 @@ alias :{
 
 This will point to the typescript, avoiding any compilations.
 
-Why do we need to clone the repository insode node_modules? Due to an issue with aurelia-webpack-loader:
+Why do we need to clone the repository inside node_modules? Due to an issue with aurelia-webpack-loader:
 
 https://github.com/aurelia/webpack-plugin/pull/122
 
